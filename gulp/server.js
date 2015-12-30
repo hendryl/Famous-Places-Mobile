@@ -4,6 +4,7 @@ var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
 
+var ngrok = require('ngrok');
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
 
@@ -39,6 +40,11 @@ function browserSyncInit(baseDir, browser) {
     startPath: '/',
     server: server,
     browser: browser
+  }, function(err, bs) {
+    ngrok.connect(bs.options.get('port'), function(err, url) {
+      console.log('url: ' + url);
+      console.log('err: ' + err);
+    });
   });
 }
 
