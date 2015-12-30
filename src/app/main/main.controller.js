@@ -1,6 +1,11 @@
-export class MainController {
-  constructor () {
+class MainController {
+  constructor($log) {
     'ngInject';
+  }
+
+  play() {
 
   }
 }
+
+export default MainController;

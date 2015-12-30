@@ -3,7 +3,7 @@
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
-import { MainController } from './main/main.controller';
+import MainController from './main/main.controller';
 
 import baseURLConfig from './api.js';
 
