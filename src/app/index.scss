@@ -12,7 +12,51 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 // bower:scss
 // endbower
 
+@import "_variables";
 
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.fill {
+  width: 100%;
+  height: 100%;
+}
+
+.basebg {
+  background-color: $color-yellowgray;
+}
+
+.no-overflow {
+  overflow-x: hidden;
+}
+
+.pad-xxsmall {
+  height: 4px;
+}
+
+.pad-xsmall {
+  height: 10px;
+}
+
+.pad-small {
+  height: 20px;
+}
+
+.pad-medium {
+  height: 35px;
+}
+
+.unstyled {
+  border: none;
+  outline: 0;
+}
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject

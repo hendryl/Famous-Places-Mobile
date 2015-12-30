@@ -9,4 +9,6 @@ export function config ($logProvider, toastrConfig) {
   toastrConfig.positionClass = 'toast-top-right';
   toastrConfig.preventDuplicates = true;
   toastrConfig.progressBar = true;
+
+  $locationProvider.html5Mode(true);
 }
