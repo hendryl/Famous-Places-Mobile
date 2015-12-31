@@ -5,6 +5,8 @@ import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import MainController from './main/main.controller';
 
+import SocketService from './services/socket.service';
+
 import baseURLConfig from './api.js';
 
 var lodash = require('lodash');
@@ -19,4 +21,6 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .config(routerConfig)
   .run(runBlock)
 
-  .controller('MainController', MainController);
+  .controller('MainController', MainController)
+
+  .service('SocketService', SocketService);
