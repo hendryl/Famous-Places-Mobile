@@ -17,6 +17,7 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .constant('moment', moment)
   .constant('_', lodash)
   .constant('SockJS', SockJS)
+  .constant('baseURLConfig', baseURLConfig)
 
   .config(config)
   .config(routerConfig)
