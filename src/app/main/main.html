@@ -22,10 +22,15 @@
         </div>
         <div class="pad-xsmall"></div>
         <div class="text-center">
-          <button class="btn btn-primary btn-lg textLarge" ng-click="main.play()">Play</button>
+          <button class="btn btn-primary btn-lg textLarge" ng-click="main.play()" ng-disabled="main.processing">Play</button>
         </div>
         <div class="pad-small"></div>
-        <p>Don't have a code? Open <em>famousplaces.bitballoon.com</em>
+        <div class="text-center text-error" ng-show="main.errorMessage.length > 0">
+          {{main.errorMessage}}
+        </div>
+        <div class="pad-small"></div>
+        <p>Don't have a code? Open
+          <em>famousplaces.bitballoon.com</em>
           on your computer to get started.</p>
       </div>
     </div>

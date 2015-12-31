@@ -32,7 +32,6 @@ class SocketService {
   }
 
   handleMessage(message) {
-    this.$log.log('message received');
 
     message = angular.fromJson(message.data);
 
@@ -41,7 +40,7 @@ class SocketService {
     }
 
     if(message.type === 'join_room') {
-      this.$log.log('join room success');
+      this.$log.log('join room message');
     }
 
     if(this.extendedHandler != null) {
