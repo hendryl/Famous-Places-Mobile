@@ -4,6 +4,7 @@ import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import MainController from './main/main.controller';
+import LobbyController from './lobby/lobby.controller';
 
 import SocketService from './services/socket.service';
 
@@ -22,5 +23,6 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .run(runBlock)
 
   .controller('MainController', MainController)
+  .controller('LobbyController', LobbyController)
 
   .service('SocketService', SocketService);
