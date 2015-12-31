@@ -8,6 +8,7 @@ class SocketService {
 
     this.socket = null;
     this.connected = false;
+    this.extendedHandler = null;
   }
 
   connect() {
@@ -42,13 +43,18 @@ class SocketService {
     if(message.type === 'join_room') {
       this.$log.log('join room success');
     }
+
+    if(this.extendedHandler != null) {
+      this.extendedHandler(message);
+    }
   }
 
-  joinRoom(name) {
+  joinRoom(name, player) {
     this.$log.log('joining room');
     this.send({
       type: 'join_room',
       name: name,
+      player: player,
       role: 'player'
     });
   }
