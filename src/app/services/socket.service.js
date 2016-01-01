@@ -1,8 +1,9 @@
 class SocketService {
-  constructor($log, SockJS, baseURLConfig) {
+  constructor($state, $log, SockJS, baseURLConfig) {
     'ngInject';
 
     this.$log = $log;
+    this.$state = $state;
     this.SockJS = SockJS;
     this.baseURLConfig = baseURLConfig;
 
@@ -32,15 +33,21 @@ class SocketService {
   }
 
   handleMessage(message) {
+    this.$log.log(message);
 
     message = angular.fromJson(message.data);
 
     if(message.type === 'error') {
-      this.$log.error(message.reason);
+      this.$log.log(message.reason);
     }
 
     if(message.type === 'join_room') {
       this.$log.log('join room message');
+    }
+
+    if(message.type === 'owner_disconnect') {
+      alert('Computer has disconnected from the game.');
+      this.$state.go('main');
     }
 
     if(this.extendedHandler != null) {

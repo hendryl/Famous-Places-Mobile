@@ -7,6 +7,7 @@ import MainController from './main/main.controller';
 import LobbyController from './lobby/lobby.controller';
 
 import SocketService from './services/socket.service';
+import BroadcastService from './services/broadcast.service';
 
 import baseURLConfig from './api.js';
 
@@ -26,4 +27,5 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .controller('MainController', MainController)
   .controller('LobbyController', LobbyController)
 
-  .service('SocketService', SocketService);
+  .service('SocketService', SocketService)
+  .service('BroadcastService', BroadcastService);
