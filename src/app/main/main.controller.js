@@ -28,7 +28,7 @@ class MainController {
         if (message.type === 'join_room') {
           this.$log.log('join room message');
           if (message.result === true) {
-            this.$state.go('lobby');
+            this.$state.go('lobby', {roomName: this.password});
           } else {
             this.$log.log('result is false');
             this.errorMessage = message.reason;

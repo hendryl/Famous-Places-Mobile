@@ -8,10 +8,10 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controllerAs: 'main'
     })
     .state('lobby', {
-      url: '/',
       templateUrl: 'app/lobby/lobby.html',
       controller: 'LobbyController',
-      controllerAs: 'lobby'
+      controllerAs: 'lobby',
+      params: {roomName: ''}
     });
 
   $urlRouterProvider.otherwise('/');
