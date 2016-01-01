@@ -42,12 +42,8 @@ class SocketService {
       this.$log.log(message.reason);
     }
 
-    if(message.type === 'join_room') {
-      this.$log.log('join room message');
-    }
-
     if(message.type === 'owner_disconnect') {
-      this.BroadcastService.send('owner_disconnect', null); 
+      this.BroadcastService.send('owner_disconnect', null);
     }
 
     if(this.extendedHandler != null) {

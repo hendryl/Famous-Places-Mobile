@@ -1,9 +1,10 @@
 class MainController {
-  constructor($state, $log, SocketService) {
+  constructor($scope, $state, $log, SocketService) {
     'ngInject';
 
     this.$log = $log;
     this.$state = $state;
+    this.$scope = $scope;
     this.SocketService = SocketService;
     this.errorMessage = '';
     this.processing = false;
@@ -17,11 +18,18 @@ class MainController {
 
       this.SocketService.extendedHandler = (message) => {
         if (message.type === 'join_room') {
+          this.$log.log('join room message');
           if (message.result === true) {
             this.$state.go('lobby');
           } else {
+            this.$log.log('result is false');
             this.errorMessage = message.reason;
             this.processing = false;
+
+            this.$scope.$apply(() => {
+              this.$scope.errorMessage = this.errorMessage;
+              this.$scope.processing = this.processing;
+            })
           }
         }
       };
