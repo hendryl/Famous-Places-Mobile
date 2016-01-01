@@ -22,7 +22,7 @@
         </div>
         <div class="pad-xsmall"></div>
         <div class="text-center">
-          <button class="btn btn-primary btn-lg textLarge" ng-click="main.play()" ng-disabled="main.processing">Play</button>
+          <button class="btn btn-primary btn-lg textLarge" ng-click="main.play()" ng-disabled="main.processing || !main.canPlay()">Play</button>
         </div>
         <div class="pad-small"></div>
         <div class="text-center text-error" ng-show="main.errorMessage.length > 0">

@@ -1,13 +1,21 @@
 class MainController {
-  constructor($scope, $state, $log, SocketService) {
+  constructor(_, $scope, $state, $log, SocketService) {
     'ngInject';
 
+    this._ = _;
     this.$log = $log;
     this.$state = $state;
     this.$scope = $scope;
     this.SocketService = SocketService;
+    this.name = '';
+    this.password = '';
     this.errorMessage = '';
     this.processing = false;
+  }
+
+  canPlay() {
+    const _ = this._;
+    return !_.isEmpty(this.name) && this.password.length === 6;
   }
 
   play() {
