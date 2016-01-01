@@ -1,11 +1,12 @@
 class SocketService {
-  constructor($state, $log, SockJS, baseURLConfig) {
+  constructor($state, $log, SockJS, baseURLConfig, BroadcastService) {
     'ngInject';
 
     this.$log = $log;
     this.$state = $state;
     this.SockJS = SockJS;
     this.baseURLConfig = baseURLConfig;
+    this.BroadcastService = BroadcastService;
 
     this.socket = null;
     this.connected = false;
@@ -46,8 +47,7 @@ class SocketService {
     }
 
     if(message.type === 'owner_disconnect') {
-      alert('Computer has disconnected from the game.');
-      this.$state.go('main');
+      this.BroadcastService.send('owner_disconnect', null); 
     }
 
     if(this.extendedHandler != null) {
