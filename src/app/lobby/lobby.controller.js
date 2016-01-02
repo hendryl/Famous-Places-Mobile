@@ -10,6 +10,12 @@ class LobbyController {
       alert('Computer disconnected from the game. Game ended.');
       $state.go('main');
     })
+
+    this.SocketService.extendedHandler = (message) => {
+      if(message.type === 'players_ready') {
+        this.handlePlayersReady();
+      }
+    }
   }
 
   startGame() {
@@ -17,12 +23,6 @@ class LobbyController {
       type:'players_ready',
       role:'player'
     });
-
-    this.SocketService.extendedHandler = (message) => {
-      if(message.type === 'players_ready') {
-        this.handlePlayersReady();
-      }
-    }
   }
 
   handlePlayersReady() {
