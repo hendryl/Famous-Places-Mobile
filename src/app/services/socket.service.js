@@ -1,9 +1,8 @@
 class SocketService {
-  constructor($state, $log, SockJS, baseURLConfig, BroadcastService) {
+  constructor($log, SockJS, baseURLConfig, BroadcastService) {
     'ngInject';
 
     this.$log = $log;
-    this.$state = $state;
     this.SockJS = SockJS;
     this.baseURLConfig = baseURLConfig;
     this.BroadcastService = BroadcastService;
@@ -25,6 +24,7 @@ class SocketService {
       this.socket.onclose = () => {
         this.connected = false;
         this.$log.log('connection closed');
+        this.BroadcastService.send('server_disconnect', null);
       };
 
       this.socket.onmessage = ((message) => {
