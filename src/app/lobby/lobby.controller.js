@@ -20,9 +20,13 @@ class LobbyController {
 
     this.SocketService.extendedHandler = (message) => {
       if(message.type === 'players_ready') {
-        this.$state.go('loading');
+        this.handlePlayersReady();
       }
     }
+  }
+
+  handlePlayersReady() {
+    this.$state.go('loading');
   }
 }
 
