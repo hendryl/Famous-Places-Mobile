@@ -1,5 +1,5 @@
 class LoadingController {
-  constructor($scope, $state, $interval) {
+  constructor($scope, $state, $interval, SocketService) {
     'ngInject';
 
     this.animTime = 850;
@@ -11,6 +11,12 @@ class LoadingController {
     });
 
     $interval(() => this.changeEllipsis(), this.animTime, 0, true);
+
+    SocketService.extendedHandler = (message) => {
+      if(message.type === 'game_ready') {
+        $state.go('game');
+      }
+    }
   }
 
   changeEllipsis() {
