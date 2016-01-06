@@ -36,7 +36,7 @@ class GameController {
         $window.navigator.vibrate(200);
 
         this.round = message.round;
-        this.instruction('Pin!');
+        this.instruction = 'Pin!';
         this.canSubmit = true;
 
       } else if(message.type === 'end_round') {

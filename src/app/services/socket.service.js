@@ -56,12 +56,14 @@ class SocketService {
     this.send({
       type: 'join_room',
       name: name,
-      player: player,
-      role: 'player'
+      player: player
     });
   }
 
   send(obj) {
+
+    obj.role = 'player';
+
     var json = angular.toJson(obj, true);
     this.socket.send(json);
   }
