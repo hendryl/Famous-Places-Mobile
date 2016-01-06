@@ -76,6 +76,14 @@ body {
   margin-bottom: 0;
 }
 
+.game-map {
+  border: 2px $color-brown solid;
+}
+
+.map-pad {
+  padding-right: 60px;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

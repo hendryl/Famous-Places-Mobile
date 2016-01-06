@@ -15,12 +15,13 @@ import baseURLConfig from './api.js';
 
 var lodash = require('lodash');
 
-angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'angularScreenfull', 'ui.router', 'ui.bootstrap', 'toastr'])
+angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'angularScreenfull', 'ui.router', 'ui.bootstrap', 'toastr', 'ngMap'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .constant('_', lodash)
   .constant('SockJS', SockJS)
   .constant('baseURLConfig', baseURLConfig)
+  .constant('mapsKey', 'AIzaSyBKm4xvXU4kg3MOvyghsWeNO1BtcHzvBQA')
 
   .config(config)
   .config(routerConfig)
