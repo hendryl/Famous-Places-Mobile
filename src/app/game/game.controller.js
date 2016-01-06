@@ -14,7 +14,6 @@ class GameController {
 
     this.instruction = "Ready...";
     this.canSubmit = false;
-    this.hasSubmitted = false;
     this.map = null;
 
     this.mapCenter = {
@@ -35,6 +34,8 @@ class GameController {
     this.SocketService.extendedHandler = (message) => {
       if(message.type === 'start_round') {
         $window.navigator.vibrate(200);
+
+        this.round = message.round;
         this.instruction('Pin!');
         this.canSubmit = true;
 
@@ -42,10 +43,27 @@ class GameController {
         //TODO: $state.go('');
       }
     }
+
+    this.prepareVibration();
+  }
+
+  prepareVibration() {
+    const navigator = this.$window.navigator;
+
+    navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
   }
 
   isInLandscape() {
     return this._.contains(this.$window.screen.orientation.type, 'landscape');
+  }
+
+  submit() {
+    this.SocketService.send({
+      type: 'answer',
+      lat: this.answer.lat,
+      long: this.answer.long,
+      round: this.round
+    });
   }
 
   prepareMap(map) {
