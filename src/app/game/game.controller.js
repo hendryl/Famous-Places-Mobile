@@ -1,10 +1,13 @@
 class GameController {
-  constructor($log, $scope, $state, NgMap, mapsKey) {
+  constructor(_, $log, $scope, $state, $window, NgMap, mapsKey) {
     'ngInject';
 
+    this._ = _;
     this.latLngDecimals = 6;
     this.$log = $log;
     this.$state = $state;
+    this.$window = $window;
+    this.$scope = $scope;
 
     this.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&callback=prepareMap&key=" + mapsKey;
 
@@ -27,7 +30,10 @@ class GameController {
       $state.go('main');
     });
 
-    this.$log.log(this.answer);
+  }
+
+  isInLandscape() {
+    return this._.contains(this.$window.screen.orientation.type, 'landscape');
   }
 
   prepareMap(map) {
