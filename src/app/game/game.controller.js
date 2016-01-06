@@ -38,9 +38,6 @@ class GameController {
         this.round = message.round;
         this.instruction = 'Pin!';
         this.canSubmit = true;
-
-      } else if(message.type === 'end_round') {
-        //TODO: $state.go('');
       }
     }
 
@@ -64,6 +61,9 @@ class GameController {
       long: this.answer.long,
       round: this.round
     });
+
+    this.canSubmit = false;
+    this.$state.go('score');
   }
 
   prepareMap(map) {
