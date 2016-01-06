@@ -1,5 +1,5 @@
 class GameController {
-  constructor(_, $log, $scope, $state, $window, NgMap, mapsKey) {
+  constructor(_, $log, $scope, $state, $window, NgMap, mapsKey, SocketService) {
     'ngInject';
 
     this._ = _;
@@ -8,10 +8,12 @@ class GameController {
     this.$state = $state;
     this.$window = $window;
     this.$scope = $scope;
+    this.SocketService = SocketService;
 
     this.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&callback=prepareMap&key=" + mapsKey;
 
-    this.instruction = "Ready";
+    this.instruction = "Ready...";
+    this.canSubmit = false;
     this.hasSubmitted = false;
     this.map = null;
 
@@ -30,6 +32,16 @@ class GameController {
       $state.go('main');
     });
 
+    this.SocketService.extendedHandler = (message) => {
+      if(message.type === 'start_round') {
+        $window.navigator.vibrate(200);
+        this.instruction('Pin!');
+        this.canSubmit = true;
+
+      } else if(message.type === 'end_round') {
+        //TODO: $state.go('');
+      }
+    }
   }
 
   isInLandscape() {
