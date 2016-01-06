@@ -8,8 +8,9 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="fill game-map" map-lazy-load-params="{{googleMapsURL}}" map-lazy-load="https://maps.google.com/maps/api/js">
-            <ng-map class="fill" center="{{game.mapCenter.lat}}, {{game.mapCenter.long}}" map-initialized="game.prepareMap(map)" on-click="game.placeMarker(event)" on-drag="game.dragMap(event)" zoom="2">
-              <marker centered=false draggable="true" on-drag="game.moveMarker(event)" on-dragend="game.endMoveMarker(event)" on-dragstart="game.startMoveMarker(event)" position="{{game.answer.lat}}, {{game.answer.long}}"></marker>
+            <ng-map class="fill" center="{{game.mapCenter.lat}}, {{game.mapCenter.long}}" map-initialized="game.prepareMap(map)" on-click="game.placeMarker(event, game)" zoom="2">
+              <marker centered=false draggable="true" on-drag="game.moveMarker(event, game)"
+              position="{{game.answer.lat}}, {{game.answer.long}}"></marker>
             </ng-map>
           </div>
       </div>
