@@ -1,24 +1,6 @@
-.lobby-container {
-  height: 100%;
-}
-
 #lobby-fixed {
   top: 20px;
   position: fixed;
   left:50%;
   transform: translateX(-50%);
-}
-
-#lobby-content {
-  display: table-cell;
-
-  text-align: center;
-  vertical-align: middle;
-  height: 100%;
-  width: 100%;
-}
-
-#lobby-button {
-  height: 30%;
-  width: 100%;
 }
