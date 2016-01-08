@@ -1,5 +1,5 @@
 class GameController {
-  constructor(_, $log, $scope, $state, $window, NgMap, mapsKey, SocketService) {
+  constructor(_, $log, $scope, $state, $window, NgMap, mapsKey, SocketService, VibrateService) {
     'ngInject';
 
     this._ = _;
@@ -33,21 +33,13 @@ class GameController {
 
     this.SocketService.extendedHandler = (message) => {
       if(message.type === 'start_round') {
-        $window.navigator.vibrate(200);
+        this.VibrateService.vibrate();
 
         this.round = message.round;
         this.instruction = 'Pin!';
         this.canSubmit = true;
       }
     }
-
-    this.prepareVibration();
-  }
-
-  prepareVibration() {
-    const navigator = this.$window.navigator;
-
-    navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
   }
 
   isInLandscape() {

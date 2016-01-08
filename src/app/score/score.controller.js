@@ -1,5 +1,5 @@
 class ScoreController {
-  constructor($scope, $state, $window, SocketService) {
+  constructor($scope, $state, $window, SocketService, VibrateService) {
     'ngInject';
 
     this.$window = $window;
@@ -16,7 +16,7 @@ class ScoreController {
 
     this.SocketService.extendedHandler = (message) => {
       if (message.type === 'end_score') {
-        $window.navigator.vibrate(200);
+        this.VibrateService.vibrate();
 
         this.canContinue = true;
         this.haveNextRound = message.haveNextRound;
@@ -28,14 +28,6 @@ class ScoreController {
         }
       }
     };
-
-    this.prepareVibration();
-  }
-
-  prepareVibration() {
-    const navigator = this.$window.navigator;
-
-    navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
   }
 }
 
