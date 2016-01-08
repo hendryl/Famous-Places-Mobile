@@ -3,6 +3,9 @@ class ScoreController {
     'ngInject';
 
     this.$window = $window;
+    this.$state = $state;
+    this.SocketService = SocketService;
+    this.VibrateService = VibrateService;
 
     this.text = 'Waiting for results';
     this.haveNextRound = true;
@@ -28,6 +31,18 @@ class ScoreController {
         }
       }
     };
+  }
+
+  continue() {
+    this.SocketService.send({
+      type: 'continue'
+    });
+
+    if(this.haveNextRound) {
+      this.$state.go();
+    } else {
+      this.$state.go();
+    }
   }
 }
 
