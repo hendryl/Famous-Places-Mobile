@@ -16,7 +16,6 @@ class ScoreController {
       $state.go('main');
     });
 
-
     this.SocketService.extendedHandler = (message) => {
       if (message.type === 'end_score') {
         this.VibrateService.vibrate();
@@ -39,9 +38,9 @@ class ScoreController {
     });
 
     if(this.haveNextRound) {
-      this.$state.go();
+      this.$state.go('game');
     } else {
-      this.$state.go();
+      this.$state.go('result');
     }
   }
 }
