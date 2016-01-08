@@ -11,6 +11,7 @@ import ScoreController from './score/score.controller';
 
 import SocketService from './services/socket.service';
 import BroadcastService from './services/broadcast.service';
+import VibrateService from './services/vibrate.service';
 
 import baseURLConfig from './api.js';
 
@@ -35,4 +36,5 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .controller('ScoreController', ScoreController)
 
   .service('SocketService', SocketService)
-  .service('BroadcastService', BroadcastService);
+  .service('BroadcastService', BroadcastService)
+  .service('VibrateService', VibrateService);
