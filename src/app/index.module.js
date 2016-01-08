@@ -8,6 +8,7 @@ import LobbyController from './lobby/lobby.controller';
 import LoadingController from './loading/loading.controller';
 import GameController from './game/game.controller';
 import ScoreController from './score/score.controller';
+import ResultController from './result/result.controller';
 
 import SocketService from './services/socket.service';
 import BroadcastService from './services/broadcast.service';
@@ -34,6 +35,7 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .controller('LoadingController', LoadingController)
   .controller('GameController', GameController)
   .controller('ScoreController', ScoreController)
+  .controller('ResultController', ResultController)
 
   .service('SocketService', SocketService)
   .service('BroadcastService', BroadcastService)
