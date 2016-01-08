@@ -19,3 +19,5 @@ class VibrateService {
     this.$window.navigator.vibrate(length);
   }
 }
+
+export default VibrateService;
