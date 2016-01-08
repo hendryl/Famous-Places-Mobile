@@ -16,7 +16,10 @@ class VibrateService {
 
   vibrate(length) {
     length = length || this.baseLength;
-    this.$window.navigator.vibrate(length);
+
+    if(this.$window.navigator.vibrate != null) {
+      this.$window.navigator.vibrate(length);
+    }
   }
 }
 

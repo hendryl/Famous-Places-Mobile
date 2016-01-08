@@ -9,6 +9,7 @@ class GameController {
     this.$window = $window;
     this.$scope = $scope;
     this.SocketService = SocketService;
+    this.VibrateService = VibrateService;
 
     this.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&callback=prepareMap&key=" + mapsKey;
 
