@@ -2,6 +2,7 @@
   <div class="row fill-height">
     <div class="col-xs-12 fill">
       <div class="flex credits-menu fill">
+
         <div class="row fill-width">
           <div class="col-xs-12">
             <button class="btn btn-block btn-lg btn-primary textLarge" ng-click="result.openFeedback()">
@@ -9,12 +10,24 @@
             </button>
           </div>
         </div>
+
         <div class="pad-medium"></div>
+
         <div class="row fill-width">
           <div class="col-xs-12">
-            <button class="btn btn-block btn-lg btn-primary textLarge">Rematch</button>
+            <button class="btn btn-block btn-lg btn-primary textLarge" ng-click="result.showOptions()" ng-disabled="!result.rematchOptionsHidden">Rematch</button>
           </div>
         </div>
+        <div class="pad-small"></div>
+        <div class="row fill-width nopad" ng-hide="result.rematchOptionsHidden">
+          <div class="col-xs-6 text-center nopad">
+            <button class="btn btn-gold">Same Players</button>
+          </div>
+          <div class="col-xs-6 text-center nopad">
+            <button class="btn btn-green">New Players</button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

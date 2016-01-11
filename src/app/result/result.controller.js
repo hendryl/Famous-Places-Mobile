@@ -8,6 +8,8 @@ class ResultController {
 
     this.current = 'result.menu';
     this.showTab();
+
+    this.rematchOptionsHidden = true;
   }
 
   changeTab(value) {
@@ -21,6 +23,10 @@ class ResultController {
 
   openFeedback() {
     this.$window.open('', '_blank');
+  }
+
+  showOptions() {
+    this.rematchOptionsHidden = false;
   }
 }
 
