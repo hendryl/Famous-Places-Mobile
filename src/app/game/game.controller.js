@@ -32,8 +32,13 @@ class GameController {
       $state.go('main');
     });
 
+    //force angular to apply data bindings when page resizes
+    angular.element($window).bind('resize', () => {
+      $scope.$apply();
+    });
+
     this.SocketService.extendedHandler = (message) => {
-      if(message.type === 'start_round') {
+      if (message.type === 'start_round') {
         this.VibrateService.vibrate();
 
         this.round = message.round;
