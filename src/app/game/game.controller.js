@@ -1,5 +1,5 @@
 class GameController {
-  constructor(_, $log, $scope, $state, $window, NgMap, mapsKey, SocketService) {
+  constructor(_, $log, $scope, $state, $window, NgMap, mapsKey, SocketService, VibrateService) {
     'ngInject';
 
     this._ = _;
@@ -9,6 +9,7 @@ class GameController {
     this.$window = $window;
     this.$scope = $scope;
     this.SocketService = SocketService;
+    this.VibrateService = VibrateService;
 
     this.googleMapsURL = "https://maps.google.com/maps/api/js?libraries=places&callback=prepareMap&key=" + mapsKey;
 
@@ -33,24 +34,13 @@ class GameController {
 
     this.SocketService.extendedHandler = (message) => {
       if(message.type === 'start_round') {
-        $window.navigator.vibrate(200);
+        this.VibrateService.vibrate();
 
         this.round = message.round;
         this.instruction = 'Pin!';
         this.canSubmit = true;
-
-      } else if(message.type === 'end_round') {
-        //TODO: $state.go('');
       }
     }
-
-    this.prepareVibration();
-  }
-
-  prepareVibration() {
-    const navigator = this.$window.navigator;
-
-    navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
   }
 
   isInLandscape() {
@@ -64,6 +54,9 @@ class GameController {
       long: this.answer.long,
       round: this.round
     });
+
+    this.canSubmit = false;
+    this.$state.go('score');
   }
 
   prepareMap(map) {
