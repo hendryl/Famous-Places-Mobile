@@ -28,6 +28,14 @@ body {
   height: 100%;
 }
 
+.fill-height {
+  height: 100%;
+}
+
+.fill-width {
+  width: 100%;
+}
+
 footer {
   width: 100%;
   min-height:: 49px;
@@ -59,8 +67,8 @@ footer.fixed {
   align-items: center;
 }
 
-.flex-row {
-  width: 100%;
+.flex.credits-menu {
+  flex-flow: column;
 }
 
 .basebg {
