@@ -1,9 +1,12 @@
 class ResultController {
-  constructor($state) {
+  constructor($state, $log, $window, feedbackURL) {
     'ngInject';
 
+    this.$log = $log;
     this.$state = $state;
-    this.current = 'result.credits';
+    this.$window = $window;
+
+    this.current = 'result.menu';
     this.showTab();
   }
 
@@ -14,6 +17,10 @@ class ResultController {
 
   showTab() {
     this.$state.transitionTo(this.current);
+  }
+
+  openFeedback() {
+    this.$window.open('', '_blank');
   }
 }
 
