@@ -24,20 +24,20 @@ class ScoreController {
         this.haveNextRound = message.haveNextRound;
 
         if (this.haveNextRound) {
-          this.text = 'End Game';
-        } else {
           this.text = 'Next Question';
+        } else {
+          this.text = 'End Game';
         }
       }
     };
   }
 
-  continue() {
+  continue () {
     this.SocketService.send({
       type: 'continue'
     });
 
-    if(this.haveNextRound) {
+    if (this.haveNextRound) {
       this.$state.go('game');
     } else {
       this.$state.go('result');
