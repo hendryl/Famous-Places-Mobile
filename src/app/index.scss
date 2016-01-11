@@ -123,12 +123,18 @@ footer.fixed {
 
 #menu-left {
   border-right: 1px solid $color-blue;
-  margin: 3px 0 0 5px;
+}
+
+#menu-left-container {
+  margin: 5px 0 0 5px;
 }
 
 #menu-right {
   border-left: 1px solid $color-blue;
-  margin: 3px 0 0 -5px;
+}
+
+#menu-right-container {
+  margin: 5px 0 0 -5px;
 }
 
 /**
