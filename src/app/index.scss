@@ -44,7 +44,6 @@ footer.fixed {
 .btn.btn-footer {
   border-radius: 0;
   min-height: 45px;
-  margin: 3px 4px 0 4px;
   background-color: $color-blue;
   color: $color-white;
   transition: all 0.3s ease;
@@ -124,10 +123,12 @@ footer.fixed {
 
 #menu-left {
   border-right: 1px solid $color-blue;
+  margin: 3px 0 0 5px;
 }
 
 #menu-right {
   border-left: 1px solid $color-blue;
+  margin: 3px 0 0 -5px;
 }
 
 /**
