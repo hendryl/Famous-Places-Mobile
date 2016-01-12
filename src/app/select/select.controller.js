@@ -6,6 +6,7 @@ class SelectController {
     this.$log = $log;
     this.$state = $state;
     this.ModeFactory = ModeFactory;
+    this.SocketService = SocketService;
 
     this.modes = [];
     this.buttonDisabled = false;
