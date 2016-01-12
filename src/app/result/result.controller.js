@@ -32,6 +32,10 @@ class ResultController {
   createNewGame() {
     this.$state.go('select');
   }
+
+  joinAnotherGame() {
+    this.$state.go('main');
+    this.SocketService.disconnect();
   }
 }
 
