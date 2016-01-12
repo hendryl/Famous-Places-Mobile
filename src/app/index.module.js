@@ -15,6 +15,8 @@ import SocketService from './services/socket.service';
 import BroadcastService from './services/broadcast.service';
 import VibrateService from './services/vibrate.service';
 
+import ModeFactory from './factories/mode.factory';
+
 import baseURLConfig from './api.js';
 
 var lodash = require('lodash');
@@ -42,4 +44,6 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
 
   .service('SocketService', SocketService)
   .service('BroadcastService', BroadcastService)
-  .service('VibrateService', VibrateService);
+  .service('VibrateService', VibrateService)
+
+  .factory('ModeFactory', ($http, baseURLConfig) => new ModeFactory($http, baseURLConfig));
