@@ -48,7 +48,7 @@ class ResultController {
   }
 
   createNewGame() {
-    this.send({
+    this.SocketService.send({
       type: 'player_create'
     });
 
