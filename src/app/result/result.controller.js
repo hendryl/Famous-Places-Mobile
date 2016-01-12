@@ -13,7 +13,11 @@ class ResultController {
 
     this.rematchOptionsHidden = true;
 
-    this.SocketService.extendedHandler = null;
+    this.SocketService.extendedHandler = (message) => {
+      if(message.type === 'player_create') {
+        this.SocketService.disconnect();
+      }
+    };
   }
 
   changeTab(value) {
