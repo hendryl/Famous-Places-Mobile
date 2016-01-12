@@ -1,16 +1,19 @@
 class ResultController {
-  constructor($state, $log, $window, feedbackURL) {
+  constructor($state, $log, $window, feedbackURL, SocketService) {
     'ngInject';
 
     this.$log = $log;
     this.$state = $state;
     this.$window = $window;
+    this.SocketService = SocketService;
     this.feedbackURL = feedbackURL;
 
     this.current = 'result.menu';
     this.showTab();
 
     this.rematchOptionsHidden = true;
+
+    this.SocketService.extendedHandler = null;
   }
 
   changeTab(value) {
@@ -26,8 +29,9 @@ class ResultController {
     this.$window.open(this.feedbackURL, '_blank');
   }
 
-  showOptions() {
-    this.rematchOptionsHidden = false;
+  createNewGame() {
+    this.$state.go('select');
+  }
   }
 }
 
