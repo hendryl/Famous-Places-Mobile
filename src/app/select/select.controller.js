@@ -26,7 +26,9 @@ class SelectController {
     });
 
     SocketService.extendedHandler = (message) => {
-      //TODO: handle message
+      if(message.type === 'player_select') {
+        this.$state.go('lobby', {roomName: message.room});
+      }
     }
   }
 
@@ -38,6 +40,8 @@ class SelectController {
       mode_id:mode_id
     });
   }
+
+  //TODO: show waiting message / go to waiting state
 }
 
 export default SelectController;
