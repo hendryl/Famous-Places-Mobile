@@ -8,9 +8,10 @@
     </div>
     <div class="pad-small"></div>
     <div class="row">
+
       <div ng-repeat="mode in select.modes">
-        <div class="col-md-4 col-xs-12 text-center mode-pad">
-          <button class="btn-unstyled btn-mode" ng-click="select.selectGameMode(mode.mode_id)" ng-disabled="select.buttonDisabled">
+        <div class="col-xs-12 col-md-4 text-center">
+          <button class="btn-unstyled mode-btn" ng-click="select.selectGameMode(mode.mode_id)" ng-disabled="select.buttonDisabled">
             <div class="mode-box center-block">
               <img class="img-responsive mode-img" ng-src="{{mode.image}}">
               <label class="mode-label h2">{{mode.name}}</label>
