@@ -25,7 +25,7 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .constant('SockJS', SockJS)
   .constant('baseURLConfig', baseURLConfig)
   .constant('mapsKey', 'AIzaSyBKm4xvXU4kg3MOvyghsWeNO1BtcHzvBQA')
-  .constant('feedbackURL', '')
+  .constant('feedbackURL', 'https://docs.google.com/forms/d/1xFTMInkxI1-n6dRYxjoxZoQvtOAAtf8OisRyZe9Rk6c/viewform')
 
   .config(config)
   .config(routerConfig)

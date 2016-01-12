@@ -5,6 +5,7 @@ class ResultController {
     this.$log = $log;
     this.$state = $state;
     this.$window = $window;
+    this.feedbackURL = feedbackURL;
 
     this.current = 'result.menu';
     this.showTab();
@@ -22,7 +23,7 @@ class ResultController {
   }
 
   openFeedback() {
-    this.$window.open('', '_blank');
+    this.$window.open(this.feedbackURL, '_blank');
   }
 
   showOptions() {
