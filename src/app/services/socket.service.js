@@ -7,6 +7,7 @@ class SocketService {
     this.baseURLConfig = baseURLConfig;
     this.BroadcastService = BroadcastService;
 
+    this.playerName = '';
     this.socket = null;
     this.connected = false;
     this.extendedHandler = null;
@@ -53,6 +54,9 @@ class SocketService {
 
   joinRoom(name, player) {
     this.$log.log('joining room');
+
+    this.playerName = player;
+
     this.send({
       type: 'join_room',
       name: name,
@@ -68,9 +72,11 @@ class SocketService {
     this.socket.send(json);
   }
 
-  close() {
-    this.socket.close();
-    this.socket = null;
+  disconnect() {
+    if(this.socket) {
+      this.socket.close();
+      this.socket = null;
+    }
   }
 }
 

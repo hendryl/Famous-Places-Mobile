@@ -11,6 +11,10 @@ class MainController {
     this.password = '';
     this.errorMessage = '';
     this.processing = false;
+
+    if(this.SocketService.playerName !== '') {
+      this.name = this.SocketService.playerName;
+    }
   }
 
   canPlay() {
