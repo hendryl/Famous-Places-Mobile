@@ -55,10 +55,12 @@ footer.fixed {
   background-color: $color-blue;
   color: $color-white;
   transition: all 0.3s ease;
+  margin: 4px 0 0 0;
 }
 
 .btn.btn-footer.active {
   background-color: $color-red;
+  border-radius: 10px 10px 0 0;
 }
 
 .flex {
@@ -133,17 +135,10 @@ footer.fixed {
   border-right: 1px solid $color-blue;
 }
 
-#menu-left-container {
-  margin: 5px 0 0 5px;
-}
-
 #menu-right {
   border-left: 1px solid $color-blue;
 }
 
-#menu-right-container {
-  margin: 5px 0 0 -5px;
-}
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
