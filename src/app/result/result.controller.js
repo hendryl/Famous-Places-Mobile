@@ -1,5 +1,5 @@
 class ResultController {
-  constructor($state, $log, $window, feedbackURL, SocketService) {
+  constructor($state, $log, $window, $scope, feedbackURL, SocketService, toastr) {
     'ngInject';
 
     this.$log = $log;
@@ -12,10 +12,24 @@ class ResultController {
     this.current = 'result.menu';
     this.showTab();
 
+    $scope.$on('owner_disconnect', function(event, args) {
+      this.canCreate = false;
+
+      toastr.info('Computer disconnected. Cannot create new game.');
+    });
+
+    $scope.$on('server_disconnect', function(event, args) {
+      this.canCreate = false;
+
+      toastr.info('Server disconnected. Cannot create new game.');
+    });
+
     this.SocketService.extendedHandler = (message) => {
       if(message.type === 'player_create') {
         this.SocketService.disconnect();
         this.canCreate = false;
+
+        toastr.info('A player is creating a new game at this computer. Join with the' + " 'join another game' button.");
       }
     };
   }

@@ -11,6 +11,11 @@ class ScoreController {
     this.haveNextRound = true;
     this.canContinue = false;
 
+    $scope.$on('owner_disconnect', function(event, args) {
+      alert('Computer disconnected from the game. Game ended.');
+      $state.go('main');
+    });
+
     $scope.$on('server_disconnect', function(event, args) {
       alert('Server disconnected. Game ended.');
       $state.go('main');
