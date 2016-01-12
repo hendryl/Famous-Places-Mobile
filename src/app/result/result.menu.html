@@ -15,7 +15,7 @@
 
         <div class="row fill-width">
           <div class="col-xs-12">
-            <button class="btn btn-block btn-lg btn-primary textLarge" ng-click="result.createNewGame()">Create new game</button>
+            <button class="btn btn-block btn-lg btn-primary textLarge" ng-click="result.createNewGame()" ng-disabled="!result.canCreate">Create new game</button>
           </div>
         </div>
 

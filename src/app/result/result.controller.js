@@ -8,14 +8,14 @@ class ResultController {
     this.SocketService = SocketService;
     this.feedbackURL = feedbackURL;
 
+    this.canCreate = true;
     this.current = 'result.menu';
     this.showTab();
-
-    this.rematchOptionsHidden = true;
 
     this.SocketService.extendedHandler = (message) => {
       if(message.type === 'player_create') {
         this.SocketService.disconnect();
+        this.canCreate = false;
       }
     };
   }
@@ -34,6 +34,10 @@ class ResultController {
   }
 
   createNewGame() {
+    this.send({
+      type: 'player_create'
+    });
+
     this.$state.go('select');
   }
 
