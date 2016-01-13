@@ -8,13 +8,13 @@
     </div>
     <div class="pad-small"></div>
     <div class="row">
-      <div ng-hide="select.modes.length > 0">
+      <div ng-hide="select.shouldHideWaitingText()">
         <div class="pad-medium"></div>
         <div class="text-center">
-          <div class="textxxLarge">Loading...</div>
+          <div class="textxxLarge">{{select.waitingText}}</div>
         </div>
       </div>
-      <div ng-repeat="mode in select.modes">
+      <div ng-repeat="mode in select.modes" ng-hide="select.buttonDisabled">
         <div class="col-xs-12 col-md-4 text-center">
           <button class="btn-unstyled mode-btn" ng-click="select.selectGameMode(mode.mode_id)" ng-disabled="select.buttonDisabled">
             <div class="mode-box center-block">

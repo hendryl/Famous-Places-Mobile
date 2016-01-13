@@ -10,6 +10,7 @@ class SelectController {
 
     this.modes = [];
     this.buttonDisabled = false;
+    this.waitingText = 'Loading...';
 
     ModeFactory.getList().success((result) => {
       this.modes = _.sortBy(result, (n) => n.mode_id);
@@ -41,7 +42,9 @@ class SelectController {
     });
   }
 
-  //TODO: show waiting message / go to waiting state
+  shouldHideWaitingText() {
+    return this.modes.length !== 0 && this.buttonDisabled === false;
+  }
 }
 
 export default SelectController;
