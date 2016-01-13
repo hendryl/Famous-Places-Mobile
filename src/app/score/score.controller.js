@@ -33,15 +33,22 @@ class ScoreController {
         } else {
           this.text = 'End Game';
         }
+        
+      } else if(message.type === 'continue') {
+        this.moveToNextSection();
       }
     };
   }
 
-  continue () {
+  continue() {
     this.SocketService.send({
       type: 'continue'
     });
 
+    this.moveToNextSection();
+  }
+
+  moveToNextSection() {
     if (this.haveNextRound) {
       this.$state.go('game');
     } else {
