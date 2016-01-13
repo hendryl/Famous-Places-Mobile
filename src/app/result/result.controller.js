@@ -36,7 +36,8 @@ class ResultController {
     };
 
     CreditsFactory.getList(this.SocketService.game_id).success( (result) => {
-      this.places = this._.sortBy(result.data, (d) => d.name);
+      this.$log.log(result);
+      this.places = this._.sortBy(result, (d) => d.name);
       this.$log.log(this.places);
     });
   }
