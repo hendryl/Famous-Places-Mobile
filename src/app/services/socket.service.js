@@ -7,13 +7,14 @@ class SocketService {
     this.baseURLConfig = baseURLConfig;
     this.BroadcastService = BroadcastService;
 
+    this.playerName = '';
     this.socket = null;
     this.connected = false;
     this.extendedHandler = null;
   }
 
   connect() {
-    return new Promise( (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.$log.log('connecting to sockjs');
       this.socket = new this.SockJS(this.baseURLConfig.localAPI + '/sockets');
       this.socket.onopen = () => {
@@ -38,21 +39,24 @@ class SocketService {
 
     message = angular.fromJson(message.data);
 
-    if(message.type === 'error') {
+    if (message.type === 'error') {
       this.$log.log(message.reason);
     }
 
-    if(message.type === 'owner_disconnect') {
+    if (message.type === 'owner_disconnect') {
       this.BroadcastService.send('owner_disconnect', null);
     }
 
-    if(this.extendedHandler != null) {
+    if (this.extendedHandler != null) {
       this.extendedHandler(message);
     }
   }
 
   joinRoom(name, player) {
     this.$log.log('joining room');
+
+    this.playerName = player;
+
     this.send({
       type: 'join_room',
       name: name,
@@ -61,16 +65,20 @@ class SocketService {
   }
 
   send(obj) {
+    if (this.socket) {
+      obj.role = 'player';
 
-    obj.role = 'player';
+      var json = angular.toJson(obj, true);
 
-    var json = angular.toJson(obj, true);
-    this.socket.send(json);
+      this.socket.send(json);
+    }
   }
 
-  close() {
-    this.socket.close();
-    this.socket = null;
+  disconnect() {
+    if (this.socket) {
+      this.socket.close();
+      this.socket = null;
+    }
   }
 }
 

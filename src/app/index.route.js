@@ -35,10 +35,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controllerAs: 'result'
     })
     .state('result.credits', {
-      templateUrl: 'app/result/result.credits.html',
+      templateUrl: 'app/result/result.credits.html'
     })
     .state('result.menu', {
-      templateUrl: 'app/result/result.menu.html',
+      templateUrl: 'app/result/result.menu.html'
+    })
+    .state('select', {
+      templateUrl: 'app/select/select.html',
+      controller: 'SelectController',
+      controllerAs: 'select'
     });
 
   $urlRouterProvider.otherwise('/');

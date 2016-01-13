@@ -9,10 +9,13 @@ import LoadingController from './loading/loading.controller';
 import GameController from './game/game.controller';
 import ScoreController from './score/score.controller';
 import ResultController from './result/result.controller';
+import SelectController from './select/select.controller';
 
 import SocketService from './services/socket.service';
 import BroadcastService from './services/broadcast.service';
 import VibrateService from './services/vibrate.service';
+
+import ModeFactory from './factories/mode.factory';
 
 import baseURLConfig from './api.js';
 
@@ -25,6 +28,7 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .constant('SockJS', SockJS)
   .constant('baseURLConfig', baseURLConfig)
   .constant('mapsKey', 'AIzaSyBKm4xvXU4kg3MOvyghsWeNO1BtcHzvBQA')
+  .constant('feedbackURL', 'https://docs.google.com/forms/d/1xFTMInkxI1-n6dRYxjoxZoQvtOAAtf8OisRyZe9Rk6c/viewform')
 
   .config(config)
   .config(routerConfig)
@@ -36,7 +40,10 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .controller('GameController', GameController)
   .controller('ScoreController', ScoreController)
   .controller('ResultController', ResultController)
+  .controller('SelectController', SelectController)
 
   .service('SocketService', SocketService)
   .service('BroadcastService', BroadcastService)
-  .service('VibrateService', VibrateService);
+  .service('VibrateService', VibrateService)
+
+  .factory('ModeFactory', ($http, baseURLConfig) => new ModeFactory($http, baseURLConfig));
