@@ -16,6 +16,7 @@ import BroadcastService from './services/broadcast.service';
 import VibrateService from './services/vibrate.service';
 
 import ModeFactory from './factories/mode.factory';
+import CreditsFactory from './factories/credits.factory';
 
 import baseURLConfig from './api.js';
 
@@ -46,4 +47,5 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .service('BroadcastService', BroadcastService)
   .service('VibrateService', VibrateService)
 
-  .factory('ModeFactory', ($http, baseURLConfig) => new ModeFactory($http, baseURLConfig));
+  .factory('ModeFactory', ($http, baseURLConfig) => new ModeFactory($http, baseURLConfig))
+  .factory('CreditsFactory', ($http, baseURLConfig) => new CreditsFactory($http, baseURLConfig));
