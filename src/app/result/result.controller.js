@@ -35,10 +35,10 @@ class ResultController {
       }
     };
 
-    CreditsFactory.getList(this.SocketService.game_id).success( (result) => {
-      this.$log.log(result);
+    CreditsFactory.getList(399).success( (result) => {
+      this.$log.debug(result);
       this.places = this._.sortBy(result, (d) => d.name);
-      this.$log.log(this.places);
+      this.$log.debug(this.places);
     });
   }
 
