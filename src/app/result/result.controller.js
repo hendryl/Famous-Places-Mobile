@@ -1,12 +1,15 @@
 class ResultController {
-  constructor(_, $state, $log, $window, $scope, feedbackURL, SocketService, toastr, CreditsFactory) {
+  constructor(_, $q, $state, $log, $window, $scope, feedbackURL, SocketService, toastr, CreditsFactory, ImageFactory) {
     'ngInject';
 
     this._ = _;
+    this.$q = $q;
     this.$log = $log;
     this.$state = $state;
     this.$window = $window;
     this.SocketService = SocketService;
+    this.CreditsFactory = CreditsFactory;
+    this.ImageFactory = ImageFactory;
     this.feedbackURL = feedbackURL;
 
     this.places = [];
@@ -27,7 +30,7 @@ class ResultController {
     });
 
     this.SocketService.extendedHandler = (message) => {
-      if(message.type === 'player_create') {
+      if (message.type === 'player_create') {
         this.SocketService.disconnect();
         this.canCreate = false;
 
@@ -35,11 +38,7 @@ class ResultController {
       }
     };
 
-    CreditsFactory.getList(399).success( (result) => {
-      this.$log.debug(result);
-      this.places = this._.sortBy(result, (d) => d.name);
-      this.$log.debug(this.places);
-    });
+    this.prepareCredits();
   }
 
   changeTab(value) {
@@ -49,6 +48,26 @@ class ResultController {
 
   showTab() {
     this.$state.transitionTo(this.current);
+  }
+
+  prepareCredits() {
+    this.CreditsFactory.getList(399).success(result => {
+      this.places = this._.sortBy(result, (d) => d.name);
+
+      const promises = this._.chain(this.places)
+        .map(p => p.photo_id)
+        .map(id => this.ImageFactory.getImage(id))
+        .value();
+
+      this.$q.all(promises).then(results => {
+        this.places = this._.each(this.places, p => {
+          p.photo = results.shift().data;
+          p.photo.thumb = p.photo.url.replace('b.jpg', 'q.jpg');
+        });
+
+        this.$log.debug(this.places);
+      });
+    });
   }
 
   openFeedback() {
