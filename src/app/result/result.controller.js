@@ -62,7 +62,7 @@ class ResultController {
       this.$q.all(promises).then(results => {
         this.places = this._.each(this.places, p => {
           p.photo = results.shift().data;
-          p.photo.thumb = p.photo.url.replace('b.jpg', 'q.jpg');
+          p.photo.thumb = p.photo.url.replace('_b.jpg', '.jpg');
         });
 
         this.$log.debug(this.places);
