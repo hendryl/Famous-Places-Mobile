@@ -11,7 +11,7 @@ class ResultController {
 
     this.places = [];
     this.canCreate = true;
-    this.current = 'result.menu';
+    this.current = 'result.credits';
     this.showTab();
 
     $scope.$on('owner_disconnect', function(event, args) {
