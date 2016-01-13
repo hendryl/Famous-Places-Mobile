@@ -1,13 +1,15 @@
 class ResultController {
-  constructor($state, $log, $window, $scope, feedbackURL, SocketService, toastr) {
+  constructor(_, $state, $log, $window, $scope, feedbackURL, SocketService, toastr, CreditsFactory) {
     'ngInject';
 
+    this._ = _;
     this.$log = $log;
     this.$state = $state;
     this.$window = $window;
     this.SocketService = SocketService;
     this.feedbackURL = feedbackURL;
 
+    this.places = [];
     this.canCreate = true;
     this.current = 'result.menu';
     this.showTab();
@@ -32,6 +34,11 @@ class ResultController {
         toastr.info('A player is creating a new game at this computer. Join with the' + " 'join another game' button.");
       }
     };
+
+    CreditsFactory.getList(this.SocketService.game_id).success( (result) => {
+      this.places = this._.sortBy(result.data, (d) => d.name);
+      this.$log.log(this.places);
+    });
   }
 
   changeTab(value) {
