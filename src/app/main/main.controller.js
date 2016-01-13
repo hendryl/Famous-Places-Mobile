@@ -33,6 +33,7 @@ class MainController {
           this.$log.log('join room message');
 
           if (message.result === true) {
+            this.SocketService.game_id = message.game_id;
             this.$state.go('lobby', {roomName: this.password});
 
           } else {
