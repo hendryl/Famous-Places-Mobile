@@ -148,8 +148,8 @@ footer.fixed {
 
 .place-box {
   max-width: 320px;
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 180px;
+  max-height: 180px;
   overflow: hidden;
   border: 8px solid $color-brown;
   border-radius: 15px;
@@ -166,6 +166,15 @@ footer.fixed {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.place-layer {
+  z-index: 50;
+  background-color: $color-black;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .place-img {
