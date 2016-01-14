@@ -1,0 +1,22 @@
+.mode-box {
+  color:$color-brown;
+  background-color: $color-gold;
+  border: 4px solid $color-brown;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.mode-label {
+  font-weight:400;
+  font-style: italic;
+}
+
+.mode-img {
+  max-height: 300px;
+}
+
+.mode-btn {
+  width: 100%;
+  max-width: 400px;
+}
