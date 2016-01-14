@@ -38,7 +38,7 @@ class ResultController {
       }
     };
 
-    this.prepareCredits();
+    this.preparePlaces();
   }
 
   changeTab(value) {
@@ -50,7 +50,7 @@ class ResultController {
     this.$state.transitionTo(this.current);
   }
 
-  prepareCredits() {
+  preparePlaces() {
     this.CreditsFactory.getList(399).success(result => {
       this.places = this._.sortBy(result, (d) => d.name);
 
@@ -68,6 +68,11 @@ class ResultController {
         this.$log.debug(this.places);
       });
     });
+  }
+
+  openPlace(index) {
+    const obj = this.places[index];
+    this.$state.go('place', {info: obj});
   }
 
   openFeedback() {

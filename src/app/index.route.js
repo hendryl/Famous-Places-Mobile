@@ -44,6 +44,12 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/select/select.html',
       controller: 'SelectController',
       controllerAs: 'select'
+    })
+    .state('place', {
+      templateUrl: 'app/place/place.html',
+      controller: 'PlaceController',
+      controllerAs: 'place',
+      params: {info: null}
     });
 
   $urlRouterProvider.otherwise('/');
