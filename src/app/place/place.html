@@ -1,0 +1,43 @@
+<div class="basebg fill no-overflow">
+  <div>
+    <img class="img-responsive info-img" ng-src="{{place.info.photo.url}}"></img>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h1>{{place.info.name}}</h1>
+      </div>
+      <div class="col-xs-12 text-right textxxSmall">
+        <a class="info-url" ng-href="{{place.info.photo.pageurl}}" target="_blank">{{place.info.photo.title}}<br>
+          photo by
+          {{place.info.photo.owner.username}}</a>
+      </div>
+
+      <div class="col-xs-12 textxxSmall text-right">
+        {{place.info.country}}
+        <img ng-src="{{place.info.flag}}" class="info-flag">
+      </div>
+    </div>
+
+    <div class="pad-small"></div>
+    <div class="row">
+      <div class="col-xs-12">
+        <p>{{place.info.description}}</p>
+      </div>
+      <div class="col-xs-12">
+        <button class="btn btn-block btn-primary" ng-click="place.openLearnMore()">
+          Learn more (opens in new tab)
+        </button>
+        <div class="pad-xsmall"></div>
+      </div>
+      <div class="col-xs-12">
+        <button class="btn btn-block btn-primary" ng-click="place.back()">
+          Back
+        </button>
+      </div>
+    </div>
+    <div class="pad-medium"></div>
+  </div>
+
+</div>

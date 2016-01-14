@@ -184,6 +184,27 @@ footer.fixed {
   z-index: 10;
 }
 
+.info-img-container {
+  overflow: hidden;
+}
+
+.info-img {
+  width: 100%;
+  max-height: 450px;
+}
+
+.info-url {
+  color: $color-brown;
+}
+
+.info-flag {
+  width: 25px;
+  height: auto;
+}
+
+.col-small-pad {
+  padding: 0 5px 0 5px;
+}
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
