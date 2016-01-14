@@ -7,6 +7,7 @@ class SocketService {
     this.baseURLConfig = baseURLConfig;
     this.BroadcastService = BroadcastService;
 
+    this.game_id = 0;
     this.playerName = '';
     this.socket = null;
     this.connected = false;

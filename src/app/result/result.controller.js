@@ -51,7 +51,7 @@ class ResultController {
   }
 
   preparePlaces() {
-    this.CreditsFactory.getList(399).success(result => {
+    this.CreditsFactory.getList(this.SocketService.game_id).success(result => {
       this.places = this._.sortBy(result, (d) => d.name);
 
       const promises = this._.chain(this.places)
