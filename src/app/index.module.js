@@ -10,6 +10,7 @@ import GameController from './game/game.controller';
 import ScoreController from './score/score.controller';
 import ResultController from './result/result.controller';
 import SelectController from './select/select.controller';
+import PlaceController from './place/place.controller';
 
 import SocketService from './services/socket.service';
 import BroadcastService from './services/broadcast.service';
@@ -17,6 +18,7 @@ import VibrateService from './services/vibrate.service';
 
 import ModeFactory from './factories/mode.factory';
 import CreditsFactory from './factories/credits.factory';
+import ImageFactory from './factories/image.factory';
 
 import baseURLConfig from './api.js';
 
@@ -42,10 +44,12 @@ angular.module('famousPlacesMobile', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSa
   .controller('ScoreController', ScoreController)
   .controller('ResultController', ResultController)
   .controller('SelectController', SelectController)
+  .controller('PlaceController', PlaceController)
 
   .service('SocketService', SocketService)
   .service('BroadcastService', BroadcastService)
   .service('VibrateService', VibrateService)
 
   .factory('ModeFactory', ($http, baseURLConfig) => new ModeFactory($http, baseURLConfig))
-  .factory('CreditsFactory', ($http, baseURLConfig) => new CreditsFactory($http, baseURLConfig));
+  .factory('CreditsFactory', ($http, baseURLConfig) => new CreditsFactory($http, baseURLConfig))
+  .factory('ImageFactory', ($http, baseURLConfig) => new ImageFactory($http, baseURLConfig));

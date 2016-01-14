@@ -5,6 +5,7 @@ class LobbyController {
     this.$state = $state;
     this.SocketService = SocketService;
     this.roomName = $stateParams.roomName;
+    this.name = SocketService.playerName;
 
     $scope.$on('owner_disconnect', function(event, args) {
       alert('Computer disconnected from the game. Game ended.');

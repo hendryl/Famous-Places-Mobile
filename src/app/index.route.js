@@ -29,7 +29,6 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controllerAs: 'score'
     })
     .state('result', {
-      url: '/result',
       templateUrl: 'app/result/result.html',
       controller: 'ResultController',
       controllerAs: 'result'
@@ -44,6 +43,12 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/select/select.html',
       controller: 'SelectController',
       controllerAs: 'select'
+    })
+    .state('place', {
+      templateUrl: 'app/place/place.html',
+      controller: 'PlaceController',
+      controllerAs: 'place',
+      params: {info: null}
     });
 
   $urlRouterProvider.otherwise('/');

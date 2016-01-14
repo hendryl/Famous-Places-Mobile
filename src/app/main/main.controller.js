@@ -26,18 +26,18 @@ class MainController {
     this.processing = true;
 
     this.SocketService.connect().then((result) => {
-      this.$log.log('success');
+      this.$log.debug('success');
 
       this.SocketService.extendedHandler = (message) => {
         if (message.type === 'join_room') {
-          this.$log.log('join room message');
+          this.$log.debug('join room message');
 
           if (message.result === true) {
             this.SocketService.game_id = message.game_id;
             this.$state.go('lobby', {roomName: this.password});
 
           } else {
-            this.$log.log('result is false');
+            this.$log.debug('result is false');
             this.errorMessage = message.reason;
             this.processing = false;
 
