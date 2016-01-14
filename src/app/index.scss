@@ -148,12 +148,15 @@ footer.fixed {
 
 .place-box {
   max-width: 320px;
-  min-height: 180px;
+  min-height: 200px;
+  max-height: 200px;
   overflow: hidden;
-  border: 5px solid $color-brown;
+  border: 8px solid $color-brown;
   border-radius: 15px;
   position: relative;
   z-index: 0;
+  box-sizing: border-box;
+  background-color: $color-brown;
 }
 
 .place-text {

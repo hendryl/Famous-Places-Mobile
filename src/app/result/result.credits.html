@@ -5,18 +5,16 @@
     </div>
   </div>
   <div ng-repeat="place in result.places">
-    <div class="row">
-      <div class="col-xs-12 fill-width">
+      <div class="col-xs-12 center-block fill-width">
 
-        <div class="place-box fill text-center">
+        <div class="place-box center-block text-center">
           <img class="img-responsive place-img" ng-src="{{place.photo.thumb}}"/>
           <strong class="fill-width place-text textLarge">{{place.name}}</strong>
 
         </div>
 
+      <div class="pad-xsmall"></div>
       </div>
-    </div>
-    <div class="pad-xsmall"></div>
   </div>
   <div class="pad-medium"></div>
   <div class="pad-small"></div>
