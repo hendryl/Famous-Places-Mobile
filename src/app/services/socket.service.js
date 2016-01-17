@@ -40,6 +40,10 @@ class SocketService {
 
     message = angular.fromJson(message.data);
 
+    this.send({
+      type: 'ack'
+    });
+
     if (message.type === 'error') {
       this.$log.debug(message.reason);
     }
